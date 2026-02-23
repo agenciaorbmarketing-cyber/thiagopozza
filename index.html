@@ -1,320 +1,263 @@
-<!-- SALVE ISTO COMO index.html (arquivo único, sem dependências externas além de Google Fonts opcional) -->
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Como Controlar a Ansiedade em 30 Segundos — Curso Online</title>
-  <meta name="description" content="Técnicas práticas, áudios e apostilas para interromper crises de ansiedade rapidamente. Curso online com acesso vitalício e garantia de 7 dias." />
-  <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPO/" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Open Graph (se quiser resultados sociais melhores, substitua og-image pela URL pública de imagem real) -->
-  <meta property="og:title" content="Como Controlar a Ansiedade em 30 Segundos" />
-  <meta property="og:description" content="Técnicas práticas para interromper crises e reduzir a frequência de ataques de ansiedade." />
-  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23bbbbbb' font-size='36' font-family='Arial' text-anchor='middle' dominant-baseline='central'>og-image.jpg (placeholder)</text></svg>" />
-  <meta property="og:type" content="website" />
+<title>Como Controlar a Ansiedade em 30 Segundos</title>
+<meta name="description" content="Curso online com técnicas práticas e rápidas para controlar crises de ansiedade e ataques de pânico. Método baseado em Terapia Cognitivo-Comportamental." />
 
-  <!-- Twitter card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Controlar a Ansiedade em 30 Segundos" />
-  <meta name="twitter:description" content="Curso online com técnicas de intervenção rápida para ansiedade." />
-  <meta name="twitter:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23bbbbbb' font-size='36' font-family='Arial' text-anchor='middle' dominant-baseline='central'>og-image.jpg (placeholder)</text></svg>" />
+<!-- Open Graph -->
+<meta property="og:title" content="Como Controlar a Ansiedade em 30 Segundos" />
+<meta property="og:description" content="Técnicas práticas para interromper crises de ansiedade rapidamente." />
+<meta property="og:image" content="assets/images/og-image.jpg" />
+<meta property="og:type" content="website" />
 
-  <!-- Tipografia (opcional; carrega do Google Fonts) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fraunces:opsz,wght@8..144,700;8..144,900&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <!-- CSS embutido (não depende de style.css externo) -->
-  <style>
-    :root{
-      --bg:#08080a;--panel:#0f0f12;--muted:#9aa0a6;--text:#eef2f6;
-      --accent:#e63946;--accent-2:#ff6b6b;--glass:rgba(255,255,255,0.03);
-      --radius:12px;--container:1100px;--shadow:0 12px 40px rgba(0,0,0,0.6)
-    }
-    *{box-sizing:border-box}html,body{height:100%}
-    body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:linear-gradient(180deg,var(--bg),#020202);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5;font-size:16px}
-    .container{max-width:var(--container);margin:0 auto;padding:1.25rem}
-    a{color:inherit}
-    /* Header */
-    .header{position:sticky;top:0;z-index:60;background:rgba(4,4,6,0.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.25rem}
-    .brand{font-family:"Fraunces",serif;font-weight:700;letter-spacing:.4px}
-    .nav{display:none}
-    .nav a{margin-left:1rem;color:var(--muted);text-decoration:none;font-weight:600}
-    /* Buttons */
-    .btn{display:inline-block;padding:.55rem .95rem;border-radius:10px;text-decoration:none;font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 12px 40px rgba(230,57,70,0.12)}
-    .btn-outline{border:1px solid rgba(255,255,255,0.06);color:var(--text);background:transparent;padding:.45rem .85rem;border-radius:9px}
-    .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.04);padding:.35rem .7rem;border-radius:9px}
-    /* Hero */
-    .hero{padding:56px 0 36px}
-    .hero-inner{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center}
-    .kicker{display:inline-block;padding:.35rem .75rem;border-radius:999px;background:linear-gradient(90deg,#222,#181818);color:var(--accent);font-weight:700;margin-bottom:.6rem;font-size:.87rem}
-    h1{font-family:"Fraunces",serif;font-size:2.1rem;margin:.25rem 0 .5rem}
-    .accent{color:var(--accent)}
-    .lead{color:var(--muted);margin-bottom:1rem}
-    .hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:.9rem}
-    .mini-benefits{display:flex;gap:1rem;list-style:none;padding:0;margin:0;color:var(--muted);font-size:.95rem}
-    .hero-img{width:100%;border-radius:14px;object-fit:cover;box-shadow:var(--shadow);max-height:420px}
-    /* Trustbar */
-    .trustbar{padding:12px 0;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-top:1px solid rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.02);margin-top:8px}
-    .trust-grid{display:flex;justify-content:space-around;gap:1rem;color:var(--muted);font-weight:700;flex-wrap:wrap}
-    /* Sections */
-    section h2{font-size:1.25rem;margin:0 0 .6rem}
-    .problem-list{margin-top:.6rem;color:var(--muted);list-style:disc;padding-left:1.25rem}
-    .modules-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-    .card{background:var(--panel);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
-    .avatar{width:160px;height:160px;border-radius:12px;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,0.6)}
-    /* Testimonials */
-    .test-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-    .testimonial{display:flex;gap:.75rem;align-items:flex-start}
-    .testimonial-thumb{width:72px;height:72px;border-radius:10px;object-fit:cover}
-    /* Offer */
-    .offer-card{display:grid;gap:1rem;background:linear-gradient(180deg,#0f0f12,#070707);padding:1.25rem;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,0.55)}
-    .price-old{color:var(--muted);text-decoration:line-through;margin-right:.5rem}
-    .price{color:var(--accent);font-weight:900;font-size:2rem}
-    /* FAQ */
-    details{background:var(--panel);padding:1rem;border-radius:10px;margin-bottom:.6rem}
-    summary{cursor:pointer;font-weight:700}
-    /* Footer */
-    .site-footer{border-top:1px solid rgba(255,255,255,0.02);padding:1rem 0;margin-top:1.25rem;color:var(--muted);text-align:center}
-    /* Responsive */
-    @media(min-width:768px){
-      .nav{display:flex}
-      .hero-inner{grid-template-columns:1fr 480px;align-items:center;gap:2rem}
-      .modules-grid{grid-template-columns:repeat(3,1fr)}
-      .test-grid{grid-template-columns:repeat(3,1fr)}
-      .offer-card{grid-template-columns:1fr 320px;align-items:start}
-    }
-    /* CTA pulse */
-    @keyframes pulse{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
-    .btn-primary.pulse{animation:pulse 1.05s ease-in-out}
-    /* small accessibility */
-    a:focus,button:focus,summary:focus{outline:3px solid rgba(230,57,70,0.18);outline-offset:2px}
-    /* Helpful note styling for non-dev user */
-    .dev-note{font-size:0.85rem;color:var(--muted);margin-top:6px}
-  </style>
+<style>
+:root {
+  --bg:#0b0b0c;
+  --card:#141416;
+  --text:#f1f1f1;
+  --muted:#b3b3b3;
+  --red:#e63946;
+  --radius:14px;
+}
 
-  <!-- Schema (Course + FAQ) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {"@type":"Course","name":"Como Controlar a Ansiedade em 30 Segundos","description":"Curso com técnicas práticas, áudios de intervenção rápida e apostilas. Acesso vitalício.","provider":{"@type":"Person","name":"Thiago Pozza"}},
-      {"@type":"FAQPage","mainEntity":[
-        {"@type":"Question","name":"O curso substitui terapia?","acceptedAnswer":{"@type":"Answer","text":"Não. É complementar; em emergências procure atendimento médico."}},
-        {"@type":"Question","name":"Quanto tempo por semana?","acceptedAnswer":{"@type":"Answer","text":"Recomendado 1–3 horas semanais."}},
-        {"@type":"Question","name":"Qual a garantia?","acceptedAnswer":{"@type":"Answer","text":"Garantia incondicional de 7 dias."}}
-      ]}
-    ]
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: radial-gradient(circle at top, #151515, #000);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.header-inner {
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  max-width:1200px;
+  margin:auto;
+  padding:1rem;
+}
+
+nav a {
+  margin-left:1.5rem;
+  color: var(--muted);
+  font-weight:600;
+}
+
+.btn {
+  display:inline-block;
+  padding:.9rem 1.4rem;
+  border-radius:999px;
+  font-weight:700;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--red), #ff6b6b);
+  color:#fff;
+}
+
+.btn-outline {
+  border:1px solid #333;
+}
+
+.hero {
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap:2rem;
+  align-items:center;
+}
+
+.badge {
+  display:inline-block;
+  background:#1e1e1e;
+  padding:.4rem .8rem;
+  border-radius:999px;
+  color:var(--red);
+  font-weight:700;
+  margin-bottom:1rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height:1.05;
+}
+
+h1 span { color: var(--red); }
+
+.hero p {
+  color: var(--muted);
+  margin:1rem 0 1.5rem;
+  max-width: 52ch;
+}
+
+.hero-actions {
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.hero-img {
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius: var(--radius);
+}
+
+.section {
+  margin-top:4rem;
+}
+
+.section h2 {
+  font-size:2rem;
+  margin-bottom:1.5rem;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap:1.5rem;
+}
+
+.card {
+  background: var(--card);
+  padding:1.5rem;
+  border-radius: var(--radius);
+}
+
+.author {
+  display:grid;
+  grid-template-columns: 200px 1fr;
+  gap:2rem;
+  align-items:center;
+}
+
+.author img {
+  width:100%;
+  border-radius: var(--radius);
+  object-fit:cover;
+}
+
+.testimonial blockquote {
+  font-size:.95rem;
+  color: var(--muted);
+  max-width:36ch;
+}
+
+footer {
+  margin-top:4rem;
+  padding:2rem 1rem;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+@media (max-width:768px){
+  .hero, .author {
+    grid-template-columns:1fr;
   }
-  </script>
+  nav { display:none; }
+}
+</style>
 </head>
+
 <body>
 
-  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+<header>
+  <div class="header-inner">
+    <strong>Curso Ansiedade</strong>
+    <nav>
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="REPLACE_CHECKOUT_URL" class="btn btn-primary">Comprar R$79,90</a>
+    </nav>
+  </div>
+</header>
 
-  <header class="header" role="banner">
-    <div class="container header-inner">
-      <div class="brand">Curso Ansiedade</div>
-      <nav class="nav" aria-label="Menu principal">
-        <a href="#modulos">Conteúdo</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#oferta">Comprar</a>
-      </nav>
-      <a class="btn btn-ghost" href="#oferta">Comprar R$79,90</a>
+<main class="container">
+
+<section class="hero">
+  <div>
+    <span class="badge">Acesso Vitalício</span>
+    <h1>Como Controlar a Ansiedade em <span>30 segundos</span></h1>
+    <p>
+      Técnicas práticas e áudios de intervenção imediata, baseadas em Terapia Cognitivo-Comportamental. Aulas gravadas, apostilas e garantia de 7 dias.
+    </p>
+    <div class="hero-actions">
+      <a href="REPLACE_CHECKOUT_URL" class="btn btn-primary">Quero Acessar — R$79,90</a>
+      <a href="#conteudo" class="btn btn-outline">Ver Conteúdo</a>
     </div>
-  </header>
+  </div>
+  <img src="assets/images/thiago-hero.jpg" alt="Thiago Pozza" class="hero-img">
+</section>
 
-  <main id="main">
+<section id="conteudo" class="section">
+  <h2>O que você vai aprender</h2>
+  <div class="cards">
+    <div class="card">Intervenções de 30s para crises</div>
+    <div class="card">Rotina prática de 30 dias</div>
+    <div class="card">Controle do pânico no dia a dia</div>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Apresentação do curso">
-      <div class="hero-inner container">
-        <div class="hero-copy">
-          <p class="kicker">Acesso Vitalício</p>
-          <h1>Como Controlar a Ansiedade em <span class="accent">30 segundos</span></h1>
-          <p class="lead">Técnicas práticas e áudios de intervenção imediata, baseadas em Terapia Cognitivo-Comportamental. Aulas gravadas, apostilas e garantia de 7 dias.</p>
-
-          <div class="hero-ctas">
-            <!-- SUBSTITUA REPLACE_CHECKOUT_URL pelo seu link de checkout -->
-            <a id="primary-cta" class="btn btn-primary" href="REPLACE_CHECKOUT_URL">Quero Acessar — R$ 79,90</a>
-            <a class="btn btn-outline" href="#modulos">Ver Conteúdo</a>
-          </div>
-
-          <ul class="mini-benefits" aria-hidden="true">
-            <li>Intervenções de 30s para crises</li>
-            <li>Rotina prática de 30 dias</li>
-            <li>Acesso vitalício + garantia</li>
-          </ul>
-
-          <p class="hero-note dev-note">Conteúdo complementar. Não substitui terapia. Em emergência, procure serviços de saúde.</p>
-        </div>
-
-        <div class="hero-media" aria-hidden="false">
-          <!-- Placeholder inline SVG como imagem temporária; substitua por assets/images/thiago-hero.jpg quando quiser -->
-          <img id="hero-img" class="hero-img" alt="Foto do profissional" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23cccccc' font-size='32' font-family='Arial' text-anchor='middle' dominant-baseline='central'>thiago-hero.jpg (placeholder)</text></svg>">
-        </div>
-      </div>
-    </section>
-
-    <!-- TRUST BAR -->
-    <section class="trustbar" aria-hidden="true">
-      <div class="container trust-grid">
-        <div>✔ Acesso vitalício</div>
-        <div>✔ Garantia de 7 dias</div>
-        <div>✔ Checkout seguro</div>
-      </div>
-    </section>
-
-    <!-- PROBLEM -->
-    <section class="problem container" aria-label="Problema e empatia">
-      <h2>Você sofre com</h2>
-      <p class="muted">Crises súbitas, ataques de pânico, pensamentos acelerados ou sensação de perda de controle são sinais reais — este curso oferece intervenções práticas e replicáveis.</p>
-      <ul class="problem-list" aria-hidden="false">
-        <li>Crise de ansiedade inesperada</li>
-        <li>Ataque de pânico</li>
-        <li>Ansiedade constante</li>
-        <li>Medo de perder o controle</li>
-      </ul>
-    </section>
-
-    <!-- MODULES -->
-    <section id="modulos" class="modules container" aria-label="Conteúdo do curso">
-      <h2>Conteúdo do curso</h2>
-      <div class="modules-grid" role="list">
-        <article class="card" role="listitem"><h3>Módulo 0</h3><p>Boas-vindas e como usar o curso (10 min)</p></article>
-        <article class="card" role="listitem"><h3>Módulo 1</h3><p>Entendendo a ansiedade: sinais e gatilhos (30 min)</p></article>
-        <article class="card" role="listitem"><h3>Módulo 2</h3><p>Técnicas imediatas (30s–3min) — 6 exercícios práticos</p></article>
-        <article class="card" role="listitem"><h3>Módulo 3</h3><p>Rotina anti-crise: prática de 4 semanas</p></article>
-        <article class="card" role="listitem"><h3>Módulo 4</h3><p>Prevenção, manutenção e checklist (PDF)</p></article>
-        <article class="card" role="listitem"><h3>Bônus</h3><p>3 áudios de intervenção rápida + apostila</p></article>
-      </div>
-    </section>
-
-    <!-- AUTHORITY -->
-    <section class="authority container" aria-label="Autoridade">
-      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-        <!-- Avatar placeholder: substitua src pela imagem real assets/images/thiago-portrait.jpg -->
-        <img id="portrait" class="avatar" alt="Foto do profissional" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23cccccc' font-size='28' font-family='Arial' text-anchor='middle' dominant-baseline='central'>thiago-portrait.jpg</text></svg>">
-        <div>
-          <h2>Sobre o autor</h2>
-          <p><strong>Thiago Pozza</strong> — psicólogo com especialização em Terapia Cognitivo-Comportamental, publicações acadêmicas e livro publicado internacionalmente. Formações reconhecidas pela União Europeia.</p>
-          <a class="btn btn-outline" href="#oferta">Acessar oferta</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="depoimentos" class="testimonials container" aria-label="Depoimentos">
-      <h2>Depoimentos</h2>
-      <div class="test-grid">
-        <figure class="testimonial">
-          <img class="testimonial-thumb" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23cccccc' font-size='24' font-family='Arial' text-anchor='middle' dominant-baseline='central'>thiago-action.jpg</text></svg>">
-          <blockquote>“Passei de crises semanais para quase inexistentes em poucas semanas.”</blockquote>
-          <figcaption>— Aline M., 34</figcaption>
-        </figure>
-
-        <figure class="testimonial">
-          <img class="testimonial-thumb" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23cccccc' font-size='24' font-family='Arial' text-anchor='middle' dominant-baseline='central'>thiago-portrait.jpg</text></svg>">
-          <blockquote>“Usei o áudio de 30 segundos no trabalho e consegui controlar o pânico.”</blockquote>
-          <figcaption>— João P., 42</figcaption>
-        </figure>
-
-        <figure class="testimonial">
-          <img class="testimonial-thumb" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect fill='%23111111' width='100%' height='100%'/><text x='50%' y='50%' fill='%23cccccc' font-size='24' font-family='Arial' text-anchor='middle' dominant-baseline='central'>thiago-action.jpg</text></svg>">
-          <blockquote>“Direto, prático e fácil de aplicar no dia a dia.”</blockquote>
-          <figcaption>— Marina S., 27</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- OFFER -->
-    <section id="oferta" class="offer container" aria-label="Oferta">
-      <div class="offer-card">
-        <div>
-          <h2>Invista na sua saúde emocional</h2>
-          <p class="dev-note">Valor de referência: substitua conforme necessário para o checkout do fornecedor.</p>
-          <p class="price-anchored"><span class="price-old">R$ 297</span> <span class="price">R$ 79,90</span></p>
-          <p class="installments">ou 3x de R$ 29,97</p>
-          <ul class="offer-list" style="color:var(--muted);margin-top:.75rem">
-            <li>Acesso imediato a todas as aulas</li>
-            <li>Áudios práticos de intervenção</li>
-            <li>Material em PDF + checklist de 30 dias</li>
-            <li>Garantia incondicional de 7 dias</li>
-          </ul>
-          <a class="btn btn-primary big" href="REPLACE_CHECKOUT_URL" id="cta-offer">Acessar curso agora</a>
-          <p class="guarantee dev-note">Garantia incondicional de 7 dias</p>
-        </div>
-
-        <aside style="padding:0 1rem">
-          <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-bottom:8px;font-weight:700">Pagamento seguro — checkout externo</div>
-          <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;font-weight:700">Bônus para os primeiros 200 alunos</div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq container" aria-label="Perguntas frequentes">
-      <h2>Perguntas frequentes</h2>
-      <details><summary>O curso substitui terapia?</summary><div>Não. O curso é complementar; em caso de risco procure atendimento médico.</div></details>
-      <details><summary>Quanto tempo por semana?</summary><div>1–3 horas semanais (aulas curtas + prática diária).</div></details>
-      <details><summary>Como funciona a garantia?</summary><div>Reembolso total em até 7 dias após a compra — solicite via suporte do fornecedor.</div></details>
-    </section>
-
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-grid">
-      <div>© <span id="year"></span> Curso Ansiedade — Conteúdo educativo. Não substitui terapia.</div>
-      <nav class="footer-nav"><a href="#faq">FAQ</a> · <a href="#oferta">Comprar</a></nav>
+<section class="section">
+  <div class="author">
+    <img src="assets/images/thiago-portrait.jpg" alt="Thiago Pozza">
+    <div>
+      <h2>Sobre o autor</h2>
+      <p>
+        <strong>Thiago Pozza</strong> é psicólogo especialista em Terapia Cognitivo-Comportamental, com publicações acadêmicas e livro publicado internacionalmente. Possui formações reconhecidas pela União Europeia.
+      </p>
+      <a href="REPLACE_CHECKOUT_URL" class="btn btn-primary">Acessar oferta</a>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- JS embutido (comportamento mínimo) -->
-  <script>
-    (function(){
-      // year
-      var yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+<section id="depoimentos" class="section">
+  <h2>Depoimentos</h2>
+  <div class="cards">
+    <div class="card testimonial">
+      <blockquote>“Passei de crises semanais para quase inexistentes em poucas semanas.”</blockquote>
+      <strong>— Aline M., 34</strong>
+    </div>
+    <div class="card testimonial">
+      <blockquote>“O áudio de 30 segundos me salvou no trabalho.”</blockquote>
+      <strong>— João P., 42</strong>
+    </div>
+    <div class="card testimonial">
+      <blockquote>“Direto, prático e fácil de aplicar.”</blockquote>
+      <strong>— Marina S., 27</strong>
+    </div>
+  </div>
+</section>
 
-      // smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(function(a){
-        a.addEventListener('click', function(e){
-          var target = document.querySelector(this.getAttribute('href'));
-          if (target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
-        });
-      });
+</main>
 
-      // details polyfill (básico)
-      if (!('open' in document.createElement('details'))){
-        document.querySelectorAll('details').forEach(function(det){
-          var summary = det.querySelector('summary'); var content = document.createElement('div');
-          while (summary.nextSibling) content.appendChild(summary.nextSibling);
-          content.style.display = 'none'; det.appendChild(content);
-          summary.addEventListener('click', function(){ content.style.display = content.style.display === 'none' ? 'block' : 'none'; });
-        });
-      }
-
-      // CTA pulse
-      var cta = document.getElementById('primary-cta'), offer = document.getElementById('oferta');
-      if (cta && offer && 'IntersectionObserver' in window){
-        var obs = new IntersectionObserver(function(entries){
-          entries.forEach(function(ent){ if (!ent.isIntersecting){ cta.classList.add('pulse'); setTimeout(function(){ cta.classList.remove('pulse'); },1100); }});
-        }, {threshold:0.2});
-        obs.observe(offer);
-      }
-    })();
-  </script>
-
-  <!-- Nota técnica curta (leia se quiser substituir imagens) -->
-  <!--
-    Substituir imagens:
-    - Para trocar as imagens placeholders pelos arquivos reais, edite o atributo src:
-      exemplo: <img id="hero-img" src="assets/images/thiago-hero.jpg" ...>
-    - Se for adicionar assets/ no repositório, preserve caminhos relativos: assets/images/thiago-hero.jpg
-    - Substitua REPLACE_CHECKOUT_URL pelo link do checkout do fornecedor (Hotmart/Stripe/etc).
-    - Atualize o canonical e, se possível, o og:image para a URL pública da imagem real.
-  -->
+<footer>
+  Conteúdo educacional. Não substitui terapia. Em emergência, procure serviços de saúde.
+</footer>
 
 </body>
 </html>
