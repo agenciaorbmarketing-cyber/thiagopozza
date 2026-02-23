@@ -1,0 +1,11 @@
+{
+  "name": "Como Controlar a Ansiedade - Curso",
+  "short_name": "Curso Ansiedade",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08080a",
+  "theme_color": "#08080a",
+  "icons": [
+    { "src": "assets/images/favicon-32.png", "sizes": "32x32", "type": "image/png" }
+  ]
+}
