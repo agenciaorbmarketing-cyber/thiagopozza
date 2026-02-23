@@ -5,180 +5,175 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Como Controlar a Ansiedade em 30 Segundos</title>
-<meta name="description" content="Curso online com técnicas práticas e rápidas para controlar crises de ansiedade e ataques de pânico. Método baseado em Terapia Cognitivo-Comportamental." />
+<meta name="description" content="Curso online com técnicas práticas para controlar crises de ansiedade e ataques de pânico rapidamente." />
+
+<!-- Favicon -->
+<link rel="icon" href="assets/images/favicon-32.png" sizes="32x32">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Como Controlar a Ansiedade em 30 Segundos" />
-<meta property="og:description" content="Técnicas práticas para interromper crises de ansiedade rapidamente." />
+<meta property="og:description" content="Técnicas práticas e rápidas para controlar crises de ansiedade." />
 <meta property="og:image" content="assets/images/og-image.jpg" />
 <meta property="og:type" content="website" />
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg:#0b0b0c;
-  --card:#141416;
-  --text:#f1f1f1;
-  --muted:#b3b3b3;
-  --red:#e63946;
-  --radius:14px;
+:root{
+--bg:#0b0b0c;
+--card:#141416;
+--text:#f1f1f1;
+--muted:#b3b3b3;
+--red:#e63946;
+--radius:14px;
 }
 
-* { box-sizing:border-box; margin:0; padding:0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: radial-gradient(circle at top, #151515, #000);
-  color: var(--text);
-  line-height: 1.6;
+body{
+font-family:'Inter',system-ui;
+background:radial-gradient(circle at top,#151515,#000);
+color:var(--text);
+line-height:1.6;
 }
 
-a { color: inherit; text-decoration: none; }
+a{text-decoration:none;color:inherit}
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 1rem;
+.container{
+max-width:1200px;
+margin:auto;
+padding:2rem 1rem;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  background: rgba(0,0,0,.7);
-  backdrop-filter: blur(10px);
-  z-index: 10;
+header{
+position:sticky;
+top:0;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(10px);
+z-index:10;
 }
 
-.header-inner {
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  max-width:1200px;
-  margin:auto;
-  padding:1rem;
+.header-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:1rem;
+max-width:1200px;
+margin:auto;
 }
 
-nav a {
-  margin-left:1.5rem;
-  color: var(--muted);
-  font-weight:600;
+nav a{
+margin-left:1.5rem;
+color:var(--muted);
+font-weight:600;
 }
 
-.btn {
-  display:inline-block;
-  padding:.9rem 1.4rem;
-  border-radius:999px;
-  font-weight:700;
+.btn{
+display:inline-block;
+padding:.9rem 1.4rem;
+border-radius:999px;
+font-weight:700;
+cursor:pointer;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--red), #ff6b6b);
-  color:#fff;
+.btn-primary{
+background:linear-gradient(135deg,var(--red),#ff6b6b);
+color:#fff;
 }
 
-.btn-outline {
-  border:1px solid #333;
+.btn-outline{
+border:1px solid #333;
 }
 
-.hero {
-  display:grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap:2rem;
-  align-items:center;
+.hero{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:2rem;
+align-items:center;
 }
 
-.badge {
-  display:inline-block;
-  background:#1e1e1e;
-  padding:.4rem .8rem;
-  border-radius:999px;
-  color:var(--red);
-  font-weight:700;
-  margin-bottom:1rem;
+.badge{
+background:#1e1e1e;
+padding:.4rem .8rem;
+border-radius:999px;
+color:var(--red);
+font-weight:700;
+margin-bottom:1rem;
+display:inline-block;
 }
 
-h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height:1.05;
+h1{
+font-size:clamp(2rem,4vw,3.2rem);
+line-height:1.05;
 }
 
-h1 span { color: var(--red); }
+h1 span{color:var(--red)}
 
-.hero p {
-  color: var(--muted);
-  margin:1rem 0 1.5rem;
-  max-width: 52ch;
+.hero p{
+color:var(--muted);
+margin:1rem 0 1.5rem;
+max-width:52ch;
 }
 
-.hero-actions {
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
+.hero-img{
+width:100%;
+height:420px;
+object-fit:cover;
+border-radius:var(--radius);
 }
 
-.hero-img {
-  width:100%;
-  height:420px;
-  object-fit:cover;
-  border-radius: var(--radius);
+.section{margin-top:4rem}
+
+.section h2{
+font-size:2rem;
+margin-bottom:1.5rem;
 }
 
-.section {
-  margin-top:4rem;
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:1.5rem;
 }
 
-.section h2 {
-  font-size:2rem;
-  margin-bottom:1.5rem;
+.card{
+background:var(--card);
+padding:1.5rem;
+border-radius:var(--radius);
 }
 
-.cards {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap:1.5rem;
+.author{
+display:grid;
+grid-template-columns:200px 1fr;
+gap:2rem;
+align-items:center;
 }
 
-.card {
-  background: var(--card);
-  padding:1.5rem;
-  border-radius: var(--radius);
+.author img{
+width:100%;
+border-radius:var(--radius);
+object-fit:cover;
 }
 
-.author {
-  display:grid;
-  grid-template-columns: 200px 1fr;
-  gap:2rem;
-  align-items:center;
+.funnel-next{
+margin-top:1.5rem;
+display:inline-block;
+color:var(--red);
+font-weight:600;
+cursor:pointer;
 }
 
-.author img {
-  width:100%;
-  border-radius: var(--radius);
-  object-fit:cover;
+footer{
+margin-top:4rem;
+padding:2rem 1rem;
+text-align:center;
+color:var(--muted);
+font-size:.85rem;
 }
 
-.testimonial blockquote {
-  font-size:.95rem;
-  color: var(--muted);
-  max-width:36ch;
-}
-
-footer {
-  margin-top:4rem;
-  padding:2rem 1rem;
-  text-align:center;
-  color:var(--muted);
-  font-size:.85rem;
-}
-
-@media (max-width:768px){
-  .hero, .author {
-    grid-template-columns:1fr;
-  }
-  nav { display:none; }
+@media(max-width:768px){
+.hero,.author{grid-template-columns:1fr}
+nav{display:none}
 }
 </style>
 </head>
@@ -186,78 +181,88 @@ footer {
 <body>
 
 <header>
-  <div class="header-inner">
-    <strong>Curso Ansiedade</strong>
-    <nav>
-      <a href="#conteudo">Conteúdo</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="REPLACE_CHECKOUT_URL" class="btn btn-primary">Comprar R$79,90</a>
-    </nav>
-  </div>
+<div class="header-inner">
+<strong>Curso Ansiedade</strong>
+<nav>
+<a href="#conteudo">Conteúdo</a>
+<a href="#autor">Autor</a>
+<a href="#oferta">Comprar</a>
+</nav>
+<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Comprar R$79,90</a>
+</div>
 </header>
 
 <main class="container">
 
 <section class="hero">
-  <div>
-    <span class="badge">Acesso Vitalício</span>
-    <h1>Como Controlar a Ansiedade em <span>30 segundos</span></h1>
-    <p>
-      Técnicas práticas e áudios de intervenção imediata, baseadas em Terapia Cognitivo-Comportamental. Aulas gravadas, apostilas e garantia de 7 dias.
-    </p>
-    <div class="hero-actions">
-      <a href="REPLACE_CHECKOUT_URL" class="btn btn-primary">Quero Acessar — R$79,90</a>
-      <a href="#conteudo" class="btn btn-outline">Ver Conteúdo</a>
-    </div>
-  </div>
-  <img src="assets/images/thiago-hero.jpg" alt="Thiago Pozza" class="hero-img">
+<div>
+<span class="badge">Acesso Vitalício</span>
+<h1>Como Controlar a Ansiedade em <span>30 segundos</span></h1>
+<p>
+Técnicas práticas e áudios de intervenção imediata baseadas em Terapia Cognitivo-Comportamental.
+</p>
+<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Quero Acessar</a>
+<div class="funnel-next" onclick="jump('#conteudo')">↓ Ver conteúdo</div>
+</div>
+<img src="assets/images/thiago-hero.jpg" class="hero-img">
 </section>
 
 <section id="conteudo" class="section">
-  <h2>O que você vai aprender</h2>
-  <div class="cards">
-    <div class="card">Intervenções de 30s para crises</div>
-    <div class="card">Rotina prática de 30 dias</div>
-    <div class="card">Controle do pânico no dia a dia</div>
-  </div>
+<h2>Módulos do Curso</h2>
+<div class="cards">
+<div class="card"><strong>Módulo 1</strong><br>Entendendo a ansiedade e seus gatilhos.</div>
+<div class="card"><strong>Módulo 2</strong><br>6 técnicas imediatas para crises.</div>
+<div class="card"><strong>Módulo 3</strong><br>Rotina prática de 30 dias.</div>
+<div class="card"><strong>Módulo 4</strong><br>Prevenção e manutenção.</div>
+</div>
+<div class="funnel-next" onclick="jump('#autor')">↓ Conheça o autor</div>
 </section>
 
-<section class="section">
-  <div class="author">
-    <img src="assets/images/thiago-portrait.jpg" alt="Thiago Pozza">
-    <div>
-      <h2>Sobre o autor</h2>
-      <p>
-        <strong>Thiago Pozza</strong> é psicólogo especialista em Terapia Cognitivo-Comportamental, com publicações acadêmicas e livro publicado internacionalmente. Possui formações reconhecidas pela União Europeia.
-      </p>
-      <a href="REPLACE_CHECKOUT_URL" class="btn btn-primary">Acessar oferta</a>
-    </div>
-  </div>
+<section id="autor" class="section">
+<div class="author">
+<img src="assets/images/thiago-portrait.jpg">
+<div>
+<h2>Sobre o Autor</h2>
+<p>
+<strong>Thiago Pozza</strong> é psicólogo especialista em Terapia Cognitivo-Comportamental, com publicações acadêmicas e livro internacional.
+</p>
+<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Acessar Oferta</a>
+<div class="funnel-next" onclick="jump('#depoimentos')">↓ Ver depoimentos</div>
+</div>
+</div>
 </section>
 
 <section id="depoimentos" class="section">
-  <h2>Depoimentos</h2>
-  <div class="cards">
-    <div class="card testimonial">
-      <blockquote>“Passei de crises semanais para quase inexistentes em poucas semanas.”</blockquote>
-      <strong>— Aline M., 34</strong>
-    </div>
-    <div class="card testimonial">
-      <blockquote>“O áudio de 30 segundos me salvou no trabalho.”</blockquote>
-      <strong>— João P., 42</strong>
-    </div>
-    <div class="card testimonial">
-      <blockquote>“Direto, prático e fácil de aplicar.”</blockquote>
-      <strong>— Marina S., 27</strong>
-    </div>
-  </div>
+<h2>Depoimentos</h2>
+<div class="cards">
+<div class="card">“Passei de crises semanais para quase inexistentes.”<br><strong>— Aline</strong></div>
+<div class="card">“O áudio de 30 segundos me salvou no trabalho.”<br><strong>— João</strong></div>
+<div class="card">“Direto, prático e aplicável.”<br><strong>— Marina</strong></div>
+</div>
+<div class="funnel-next" onclick="jump('#oferta')">↓ Ver oferta</div>
+</section>
+
+<section id="oferta" class="section">
+<h2>Invista na sua saúde emocional</h2>
+<div class="card">
+<p><strong>De R$297 por apenas R$79,90</strong></p>
+<p>Acesso vitalício + garantia de 7 dias.</p>
+<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Comprar Agora</a>
+</div>
 </section>
 
 </main>
 
 <footer>
-  Conteúdo educacional. Não substitui terapia. Em emergência, procure serviços de saúde.
+Conteúdo educacional. Não substitui terapia. Em emergência procure atendimento médico.
 </footer>
+
+<script>
+function jump(id){
+const el=document.querySelector(id);
+window.scrollTo({top:el.offsetTop-60,behavior:"smooth"});
+}
+</script>
 
 </body>
 </html>
