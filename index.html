@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Como Controlar a Ansiedade em 30 Segundos</title>
-<meta name="description" content="Curso online com técnicas práticas para controlar crises de ansiedade e ataques de pânico rapidamente." />
+<meta name="description" content="Técnicas práticas baseadas em Terapia Cognitivo-Comportamental para controlar crises de ansiedade rapidamente.">
 
-<!-- Favicon -->
 <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Como Controlar a Ansiedade em 30 Segundos" />
-<meta property="og:description" content="Técnicas práticas e rápidas para controlar crises de ansiedade." />
-<meta property="og:image" content="assets/images/og-image.jpg" />
-<meta property="og:type" content="website" />
+<meta property="og:title" content="Como Controlar a Ansiedade em 30 Segundos">
+<meta property="og:description" content="Método prático para interromper crises de ansiedade.">
+<meta property="og:image" content="assets/images/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -29,7 +25,7 @@
 --radius:14px;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:'Inter',system-ui;
@@ -38,13 +34,7 @@ color:var(--text);
 line-height:1.6;
 }
 
-a{text-decoration:none;color:inherit}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:2rem 1rem;
-}
+.container{max-width:1200px;margin:auto;padding:2rem 1rem}
 
 header{
 position:sticky;
@@ -58,16 +48,12 @@ z-index:10;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:1rem;
 max-width:1200px;
 margin:auto;
+padding:1rem;
 }
 
-nav a{
-margin-left:1.5rem;
-color:var(--muted);
-font-weight:600;
-}
+nav a{margin-left:1.5rem;color:var(--muted);font-weight:600}
 
 .btn{
 display:inline-block;
@@ -80,10 +66,6 @@ cursor:pointer;
 .btn-primary{
 background:linear-gradient(135deg,var(--red),#ff6b6b);
 color:#fff;
-}
-
-.btn-outline{
-border:1px solid #333;
 }
 
 .hero{
@@ -99,8 +81,8 @@ padding:.4rem .8rem;
 border-radius:999px;
 color:var(--red);
 font-weight:700;
-margin-bottom:1rem;
 display:inline-block;
+margin-bottom:1rem;
 }
 
 h1{
@@ -124,11 +106,7 @@ border-radius:var(--radius);
 }
 
 .section{margin-top:4rem}
-
-.section h2{
-font-size:2rem;
-margin-bottom:1.5rem;
-}
+.section h2{font-size:2rem;margin-bottom:1.5rem}
 
 .cards{
 display:grid;
@@ -155,12 +133,9 @@ border-radius:var(--radius);
 object-fit:cover;
 }
 
-.funnel-next{
+.cta-next{
 margin-top:1.5rem;
 display:inline-block;
-color:var(--red);
-font-weight:600;
-cursor:pointer;
 }
 
 footer{
@@ -184,11 +159,10 @@ nav{display:none}
 <div class="header-inner">
 <strong>Curso Ansiedade</strong>
 <nav>
-<a href="#conteudo">Conteúdo</a>
-<a href="#autor">Autor</a>
-<a href="#oferta">Comprar</a>
+<a onclick="jump('#modulos')">Conteúdo</a>
+<a onclick="jump('#autor')">Autor</a>
+<a onclick="jump('#oferta')">Oferta</a>
 </nav>
-<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Comprar R$79,90</a>
 </div>
 </header>
 
@@ -198,24 +172,23 @@ nav{display:none}
 <div>
 <span class="badge">Acesso Vitalício</span>
 <h1>Como Controlar a Ansiedade em <span>30 segundos</span></h1>
-<p>
-Técnicas práticas e áudios de intervenção imediata baseadas em Terapia Cognitivo-Comportamental.
-</p>
-<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Quero Acessar</a>
-<div class="funnel-next" onclick="jump('#conteudo')">↓ Ver conteúdo</div>
+<p>Técnicas práticas e áudios imediatos baseados em Terapia Cognitivo-Comportamental.</p>
+<a class="btn btn-primary" onclick="jump('#modulos')">Quero acessar</a>
 </div>
 <img src="assets/images/thiago-hero.jpg" class="hero-img">
 </section>
 
-<section id="conteudo" class="section">
+<section id="modulos" class="section">
 <h2>Módulos do Curso</h2>
 <div class="cards">
-<div class="card"><strong>Módulo 1</strong><br>Entendendo a ansiedade e seus gatilhos.</div>
-<div class="card"><strong>Módulo 2</strong><br>6 técnicas imediatas para crises.</div>
-<div class="card"><strong>Módulo 3</strong><br>Rotina prática de 30 dias.</div>
-<div class="card"><strong>Módulo 4</strong><br>Prevenção e manutenção.</div>
+<div class="card">Entendendo gatilhos da ansiedade</div>
+<div class="card">6 técnicas imediatas para crises</div>
+<div class="card">Rotina prática de 30 dias</div>
+<div class="card">Prevenção e manutenção</div>
 </div>
-<div class="funnel-next" onclick="jump('#autor')">↓ Conheça o autor</div>
+<div class="cta-next">
+<a class="btn btn-primary" onclick="jump('#autor')">Tenho interesse</a>
+</div>
 </section>
 
 <section id="autor" class="section">
@@ -223,11 +196,11 @@ Técnicas práticas e áudios de intervenção imediata baseadas em Terapia Cogn
 <img src="assets/images/thiago-portrait.jpg">
 <div>
 <h2>Sobre o Autor</h2>
-<p>
-<strong>Thiago Pozza</strong> é psicólogo especialista em Terapia Cognitivo-Comportamental, com publicações acadêmicas e livro internacional.
-</p>
-<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Acessar Oferta</a>
-<div class="funnel-next" onclick="jump('#depoimentos')">↓ Ver depoimentos</div>
+<p><strong>Thiago Pozza</strong> é psicólogo especialista em Terapia Cognitivo-Comportamental, com publicações acadêmicas e livro internacional.</p>
+<div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+<a class="btn btn-primary" onclick="jump('#oferta')">Acessar oferta</a>
+<a class="btn" onclick="jump('#depoimentos')">Ver depoimentos</a>
+</div>
 </div>
 </div>
 </section>
@@ -235,11 +208,10 @@ Técnicas práticas e áudios de intervenção imediata baseadas em Terapia Cogn
 <section id="depoimentos" class="section">
 <h2>Depoimentos</h2>
 <div class="cards">
-<div class="card">“Passei de crises semanais para quase inexistentes.”<br><strong>— Aline</strong></div>
-<div class="card">“O áudio de 30 segundos me salvou no trabalho.”<br><strong>— João</strong></div>
-<div class="card">“Direto, prático e aplicável.”<br><strong>— Marina</strong></div>
+<div class="card">“Passei de crises semanais para quase inexistentes.” — Aline</div>
+<div class="card">“O áudio de 30 segundos me salvou no trabalho.” — João</div>
+<div class="card">“Direto, prático e aplicável.” — Marina</div>
 </div>
-<div class="funnel-next" onclick="jump('#oferta')">↓ Ver oferta</div>
 </section>
 
 <section id="oferta" class="section">
@@ -247,14 +219,14 @@ Técnicas práticas e áudios de intervenção imediata baseadas em Terapia Cogn
 <div class="card">
 <p><strong>De R$297 por apenas R$79,90</strong></p>
 <p>Acesso vitalício + garantia de 7 dias.</p>
-<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener" class="btn btn-primary">Comprar Agora</a>
+<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Comprar agora</a>
 </div>
 </section>
 
 </main>
 
 <footer>
-Conteúdo educacional. Não substitui terapia. Em emergência procure atendimento médico.
+Conteúdo educacional. Não substitui terapia. Em emergência, procure atendimento médico.
 </footer>
 
 <script>
