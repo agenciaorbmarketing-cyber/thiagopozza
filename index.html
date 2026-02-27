@@ -17,251 +17,287 @@
 
 <style>
 :root{
---bg:#0b0b0c;
---card:#141416;
---text:#f1f1f1;
---muted:#b3b3b3;
---red:#e63946;
---radius:14px;
+  --bg:#0b0b0c;
+  --card:#141416;
+  --text:#f1f1f1;
+  --muted:#b3b3b3;
+  --red:#e63946;
+  --radius:14px;
 }
 
+/* Base (mantido) */
 *{margin:0;padding:0;box-sizing:border-box}
-
-body{
-font-family:'Inter',system-ui;
-background:radial-gradient(circle at top,#151515,#000);
-color:var(--text);
-line-height:1.6;
-}
-
+body{font-family:'Inter',system-ui;background:radial-gradient(circle at top,#151515,#000);color:var(--text);line-height:1.6;}
 .container{max-width:1200px;margin:auto;padding:2rem 1rem}
-
-header{
-position:sticky;
-top:0;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(10px);
-z-index:10;
-}
-
-.header-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-max-width:1200px;
-margin:auto;
-padding:1rem;
-}
-
+header{position:sticky;top:0;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);z-index:10;}
+.header-inner{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto;padding:1rem;}
 nav a{margin-left:1.5rem;color:var(--muted);font-weight:600}
-
-.btn{
-display:inline-block;
-padding:.9rem 1.4rem;
-border-radius:999px;
-font-weight:700;
-cursor:pointer;
-}
-
-.btn-primary{
-background:linear-gradient(135deg,var(--red),#ff6b6b);
-color:#fff;
-}
-
-.hero{
-display:grid;
-grid-template-columns:1.2fr 1fr;
-gap:2rem;
-align-items:center;
-}
-
-.badge{
-background:#1e1e1e;
-padding:.4rem .8rem;
-border-radius:999px;
-color:var(--red);
-font-weight:700;
-display:inline-block;
-margin-bottom:1rem;
-}
-
-h1{
-font-size:clamp(2rem,4vw,3.2rem);
-line-height:1.05;
-}
-
+.btn{display:inline-block;padding:.9rem 1.4rem;border-radius:999px;font-weight:700;cursor:pointer;}
+.btn-primary{background:linear-gradient(135deg,var(--red),#ff6b6b);color:#fff;}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center;}
+.badge{background:#1e1e1e;padding:.4rem .8rem;border-radius:999px;color:var(--red);font-weight:700;display:inline-block;margin-bottom:1rem;}
+h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;}
 h1 span{color:var(--red)}
-
-.hero p{
-color:var(--muted);
-margin:1rem 0 1.5rem;
-max-width:52ch;
-}
-
-.hero-img{
-width:100%;
-height:420px;
-object-fit:cover;
-border-radius:var(--radius);
-}
-
+.hero p{color:var(--muted);margin:1rem 0 1.5rem;max-width:52ch;}
+.hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius);}
 .section{margin-top:4rem}
 .section h2{font-size:2rem;margin-bottom:1.5rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
+.card{background:var(--card);padding:1.5rem;border-radius:var(--radius);}
+.author{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:center;}
+.author img{width:100%;border-radius:var(--radius);object-fit:cover;}
+.cta-next{margin-top:1.5rem;display:inline-block;}
+footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);font-size:.85rem;}
+@media(max-width:768px){.hero,.author{grid-template-columns:1fr}nav{display:none}}
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:1.5rem;
+/* --- Novos ajustes CSS apenas para a seção de oferta e Sobre o Autor --- */
+.offer-card {
+  text-align:center;
+  max-width:520px;
+  margin: 0 auto;
+  background: linear-gradient(180deg,#151515,#0f0f12);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
 }
 
-.card{
-background:var(--card);
-padding:1.5rem;
-border-radius:var(--radius);
+/* Headline menor que o preço */
+.offer-headline {
+  font-size:1.05rem;
+  color:var(--muted);
+  margin-bottom:6px;
 }
 
-.author{
-display:grid;
-grid-template-columns:200px 1fr;
-gap:2rem;
-align-items:center;
+/* Preço em maior destaque */
+.offer-price {
+  font-size:2.25rem;
+  font-weight:900;
+  margin:8px 0;
+  color:var(--red);
 }
 
-.author img{
-width:100%;
-border-radius:var(--radius);
-object-fit:cover;
+/* Percentual de desconto */
+.offer-discount {
+  font-size:0.95rem;
+  color:var(--muted);
+  margin-bottom:10px;
 }
 
-.cta-next{
-margin-top:1.5rem;
-display:inline-block;
+/* Parcelamento em tamanho médio */
+.offer-installment {
+  font-size:1.05rem;
+  font-weight:700;
+  margin-top:6px;
 }
 
-footer{
-margin-top:4rem;
-padding:2rem 1rem;
-text-align:center;
-color:var(--muted);
-font-size:.85rem;
+/* CTA grande */
+.offer-cta {
+  display:inline-block;
+  margin-top:18px;
+  padding:14px 26px;
+  font-size:1rem;
+  border-radius:12px;
+  font-weight:800;
 }
 
-@media(max-width:768px){
-.hero,.author{grid-template-columns:1fr}
-nav{display:none}
+/* Garantia menor porém visível */
+.offer-trust {
+  font-size:0.92rem;
+  color:var(--muted);
+  margin-top:12px;
 }
+
+/* Sobre o autor - credenciais em bullets */
+.author-bullets {
+  margin-top:12px;
+  list-style: none;
+  padding-left:0;
+  color:var(--muted);
+}
+.author-bullets li {
+  margin:6px 0;
+}
+
+/* Hotmart button wrapper (to center widget) */
+.hotmart-wrapper { margin-top:14px; display:flex; justify-content:center; align-items:center; gap:12px; flex-direction:column; }
+
+/* Fallback buy link (hidden by default, shown if widget fails) */
+.fallback-buy { display:none; margin-top:10px; }
+@media (max-width:480px){ .offer-price{font-size:1.8rem} }
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="header-inner">
-<strong>Por Thiago Pozza</strong>
-<nav>
-<a onclick="jump('#modulos')">Conteúdo</a>
-<a onclick="jump('#autor')">Autor</a>
-<a onclick="jump('#oferta')">Oferta</a>
-</nav>
-</div>
+  <div class="header-inner">
+    <strong>Por Thiago Pozza</strong>
+    <nav>
+      <a onclick="jump('#modulos')">Conteúdo</a>
+      <a onclick="jump('#autor')">Autor</a>
+      <a onclick="jump('#oferta')">Oferta</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container">
 
-<section class="hero">
-<div>
-<span class="badge">Programa Guiado</span>
-<h1>Controlando a Ansiedade em <span>7 dias</span></h1>
-<p>Um método estruturado, passo a passo, para aprender a reduzir crises de ansiedade e retomar o controle emocional em uma semana.</p>
-<a class="btn btn-primary" onclick="jump('#modulos')">Quero acessar</a>
-</div>
-<img src="assets/images/thiago-hero.jpg" class="hero-img" alt="Thiago Pozza">
-</section>
+  <section class="hero">
+    <div>
+      <span class="badge">Programa Guiado</span>
+      <h1>Controlando a Ansiedade em <span>7 dias</span></h1>
+      <p>Um método estruturado, passo a passo, para aprender a reduzir crises de ansiedade e retomar o controle emocional em uma semana.</p>
+      <a class="btn btn-primary" onclick="jump('#modulos')">Quero acessar</a>
+    </div>
+    <img src="assets/images/thiago-hero.jpg" class="hero-img" alt="Thiago Pozza">
+  </section>
 
-<section id="modulos" class="section">
-<h2>O que você vai aprender</h2>
-<div class="cards">
-<div class="card">Mapeamento dos gatilhos emocionais</div>
-<div class="card">Técnicas diárias para reduzir ansiedade</div>
-<div class="card">Reestruturação cognitiva prática</div>
-<div class="card">Plano de manutenção emocional</div>
-</div>
-<div class="cta-next">
-<a class="btn btn-primary" onclick="jump('#autor')">Tenho interesse</a>
-</div>
-</section>
+  <section id="modulos" class="section">
+    <h2>O que você vai aprender</h2>
+    <div class="cards">
+      <div class="card">Mapeamento dos gatilhos emocionais</div>
+      <div class="card">Técnicas diárias para reduzir ansiedade</div>
+      <div class="card">Reestruturação cognitiva prática</div>
+      <div class="card">Plano de manutenção emocional</div>
+    </div>
+    <div class="cta-next">
+      <a class="btn btn-primary" onclick="jump('#autor')">Tenho interesse</a>
+    </div>
+  </section>
 
-<section id="autor" class="section">
-<div class="author">
-<img src="assets/images/thiago-portrait.jpg" alt="Foto Dr. Thiago Pozza">
-<div>
-<h2>Sobre o Autor</h2>
+  <!-- SOBRE O AUTOR (nova versão otimizada) -->
+  <section id="autor" class="section" aria-labelledby="sobre-autor">
+    <h2 id="sobre-autor">Sobre o Autor</h2>
+    <div class="author">
+      <img src="assets/images/thiago-portrait.jpg" alt="Foto Dr. Thiago Pozza">
+      <div>
+        <div class="author-subtitle" style="color:var(--muted);font-weight:700;margin-bottom:8px">Referência nacional em Terapia Cognitivo-Comportamental</div>
 
-<p>Dr. Thiago Pozza é psicólogo clínico com 10 anos de prática, fundador da Clínica Pozza e referência nacional em Terapia Cognitivo-Comportamental.</p>
+        <p style="margin-bottom:8px">
+          Dr. Thiago Pozza é psicólogo clínico com 10 anos de prática e fundador da Clínica Pozza. Une experiência clínica, formação internacional e didática prática para gerar resultados reais.
+        </p>
 
-<p>Especialista e supervisor pelo CTC Veda, com reconhecimento do MEC e da União Europeia, e certificado internacional pelo Instituto Beck, maior autoridade mundial na área.</p>
+        <ul class="author-bullets" aria-hidden="false">
+          <li>• 10 anos de prática clínica</li>
+          <li>• Certificação internacional pelo Instituto Beck</li>
+          <li>• Especialista e supervisor pelo CTC Veda</li>
+          <li>• Certificação em Neurociência por Harvard (em andamento)</li>
+        </ul>
 
-<p>Palestrante em saúde mental, com sólida experiência clínica e hospitalar psiquiátrica, e certificação em Neurociência em andamento pela Universidade de Harvard.</p>
+        <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a class="btn btn-primary" onclick="jump('#oferta')">Acessar oferta</a>
+          <a class="btn" onclick="jump('#depoimentos')">Ver depoimentos</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>Combina autoridade clínica, reconhecimento internacional e didática prática para gerar os resultados claros e aplicáveis neste treinamento.</p>
+  <section id="depoimentos" class="section">
+    <h2>Resultados reais</h2>
+    <div class="cards">
+      <div class="card">“Em poucos dias já senti mais controle emocional.” — Aline</div>
+      <div class="card">“O método é simples e realmente funciona.” — João</div>
+      <div class="card">“Finalmente consegui reduzir minhas crises.” — Marina</div>
+    </div>
+  </section>
 
-<div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
-<a class="btn btn-primary" onclick="jump('#oferta')">Acessar oferta</a>
-<a class="btn" onclick="jump('#depoimentos')">Ver depoimentos</a>
-</div>
-</div>
-</div>
-</section>
+  <!-- OFERTA (ajustada conforme sua especificação) -->
+  <section id="oferta" class="section" aria-labelledby="oferta-title">
+    <h2 id="oferta-title">Invista na sua saúde emocional</h2>
 
-<section id="depoimentos" class="section">
-<h2>Resultados reais</h2>
-<div class="cards">
-<div class="card">“Em poucos dias já senti mais controle emocional.” — Aline</div>
-<div class="card">“O método é simples e realmente funciona.” — João</div>
-<div class="card">“Finalmente consegui reduzir minhas crises.” — Marina</div>
-</div>
-</section>
+    <div class="offer-card" role="region" aria-label="Oferta do curso">
+      <!-- Headline (menor que o preço) -->
+      <div class="offer-headline">Acesso vitalício por apenas R$ 37,90</div>
 
-<section id="oferta" class="section">
-<h2>Invista na sua saúde emocional</h2>
+      <!-- Preço em destaque (maior) -->
+      <div class="offer-price" aria-hidden="true">R$ 37,90</div>
 
-<div class="card" style="text-align:center;max-width:420px;margin:auto">
-<p style="opacity:.6;text-decoration:line-through">De R$ 297,00</p>
+      <!-- Discount line -->
+      <div class="offer-discount">(87% OFF de R$297)</div>
 
-<p style="font-size:1.8rem;font-weight:800;margin:.5rem 0">
-Por R$ 37,90
-</p>
+      <!-- Parcelamento -->
+      <div class="offer-installment">Ou 5x de R$ 8,39</div>
 
-<p style="font-weight:700;margin-top:.8rem">
-5x de R$ 8,39
-</p>
+      <!-- Hotmart widget / button -->
+      <div class="hotmart-wrapper" aria-hidden="false">
+        <!-- Widget anchor (prevenção: onclick return false as provided) -->
+        <a onclick="return false;" href="https://pay.hotmart.com/G104595325U?checkoutMode=2" class="hotmart-fb hotmart__button-checkout" aria-label="Abrir checkout Hotmart">
+          <img src="https://static.hotmart.com/img/btn-buy-green.png" alt="Comprar agora">
+        </a>
 
-<p style="font-size:.9rem;opacity:.8">
-Apenas R$ 0,27 por dia
-</p>
+        <!-- Fallback (visível se widget falhar) -->
+        <a id="fallbackBuy" class="btn btn-primary fallback-buy" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
 
-<p style="margin-top:1rem;font-size:.85rem;opacity:.85">
-✔ Acesso vitalício<br>
-✔ Garantia incondicional de 7 dias
-</p>
+        <!-- noscript fallback (se JS desativado) -->
+        <noscript>
+          <div style="margin-top:10px">
+            <a class="btn btn-primary" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
+          </div>
+        </noscript>
+      </div>
 
-<a href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1.5rem">
-Comprar agora
-</a>
-</div>
-</section>
+      <!-- Guarantee (smaller but visible) -->
+      <div class="offer-trust" role="note">
+        Garantia incondicional de 7 dias para reembolso total
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer>
-Conteúdo educacional. Não substitui terapia. Em emergência, procure atendimento especializado.
+  Conteúdo educacional. Não substitui terapia. Em emergência, procure atendimento especializado.
 </footer>
 
+<!-- Small script: jump + Hotmart loader + fallback logic -->
 <script>
+/* smooth jump (keeps behavior) */
 function jump(id){
-const el=document.querySelector(id);
-window.scrollTo({top:el.offsetTop-60,behavior:"smooth"});
+  const el = document.querySelector(id);
+  if (!el) return;
+  window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+  // accessibility: move focus after scrolling
+  setTimeout(() => {
+    try { el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); } catch(e) {}
+  }, 250);
 }
+
+/* Import Hotmart widget (insert scripts & css) */
+function importHotmart(){
+  try {
+    // widget script
+    var s = document.createElement('script');
+    s.src = 'https://static.hotmart.com/checkout/widget.min.js';
+    s.async = true;
+    document.head.appendChild(s);
+    // widget css
+    var l = document.createElement('link');
+    l.rel = 'stylesheet'; l.type = 'text/css';
+    l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+    document.head.appendChild(l);
+  } catch(e){
+    console.warn('Hotmart import failed', e);
+  }
+}
+
+/* Fallback logic:
+   If widget doesn't initialize within 2.5s, show fallback buy CTA (link) */
+(function(){
+  importHotmart();
+
+  // after a delay, if Hotmart's global is not present, show fallback button
+  setTimeout(function(){
+    var hotmartPresent = typeof Hotmart !== 'undefined' || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
+    if (!hotmartPresent) {
+      var fb = document.getElementById('fallbackBuy');
+      if (fb) fb.style.display = 'inline-block';
+    } else {
+      // sometimes widget binds automatically; ensure fallback hidden
+      var fb = document.getElementById('fallbackBuy');
+      if (fb) fb.style.display = 'none';
+    }
+  }, 2500);
+})();
 </script>
 
 </body>
