@@ -195,11 +195,11 @@ footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);fo
         <button id="hotmartBtn" class="offer-cta" aria-label="Quero acesso vitalício agora">Quero acesso vitalício agora</button>
 
         <!-- fallback link (hidden until widget fails) -->
-        <a id="fallbackBuy" class="btn btn-primary fallback-buy" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
+        <a id="fallbackBuy" class="btn btn-primary fallback-buy" href="https://pay.hotmart.com/G104595325U?checkoutMode=2" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
 
         <noscript>
           <div style="margin-top:10px">
-            <a class="btn btn-primary" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
+            <a class="btn btn-primary" href="https://pay.hotmart.com/G104595325U?checkoutMode=2" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
           </div>
         </noscript>
       </div>
@@ -225,18 +225,40 @@ function jump(id){
   }, 300);
 }
 
-/* Hotmart import + robust fallback and single-CTA enforcement */
+/* Hotmart import + robust fallback and single-CTA enforcement
+   - keeps your visual CTA (#hotmartBtn)
+   - ensures any injected Hotmart UI is removed/hidden
+   - shows fallback (#fallbackBuy) only when widget truly fails
+*/
 (function(){
   var hotmartLoaded = false;
   var fallback = document.getElementById('fallbackBuy');
 
-  // proactively hide any hotmart UI via JS (CSS also hides it)
+  // proactively hide/remove any hotmart UI via JS (CSS also hides it)
   function removeHotmartVisuals(){
+    // 1) hide known classes (keeps presentational hiding)
     var els = document.querySelectorAll('.hotmart-fb, .hotmart__button-checkout');
     els.forEach(function(x){ try { x.style.display = 'none'; } catch(e){} });
+
+    // 2) aggressively remove nodes that look like Hotmart widgets (but keep our anchor/button)
+    var candidates = Array.from(document.querySelectorAll('a,button,div,iframe'));
+    candidates.forEach(function(el){
+      try{
+        var info = (el.className || '') + ' ' + (el.id || '') + ' ' + (el.getAttribute('href') || '') + ' ' + (el.getAttribute('src') || '') + ' ' + (el.outerHTML || '');
+        if(/hotmart/i.test(info) && el.id !== 'hotmartAnchor' && el.id !== 'hotmartBtn' && el.id !== 'fallbackBuy'){
+          // remove from DOM when it's clearly a hotmart injected thing
+          if (el.parentNode) el.parentNode.removeChild(el);
+        }
+      } catch(e){}
+    });
+
+    // 3) final safety: hide any a[href*="hotmart"] except our hidden anchor and fallback
+    document.querySelectorAll('a[href*="hotmart"]').forEach(function(a){
+      if(a.id !== 'hotmartAnchor' && a.id !== 'fallbackBuy') a.style.display = 'none';
+    });
   }
 
-  // import widget script + css
+  // Load widget script + stylesheet
   var s = document.createElement('script');
   s.src = 'https://static.hotmart.com/checkout/widget.min.js';
   s.async = true;
@@ -248,6 +270,7 @@ function jump(id){
   s.onerror = function(){
     hotmartLoaded = false;
     if (fallback) fallback.style.display = 'inline-block';
+    removeHotmartVisuals();
   };
   document.head.appendChild(s);
 
@@ -257,12 +280,21 @@ function jump(id){
   document.head.appendChild(l);
 
   // create hidden anchor for widget to bind to (widget expects anchor)
-  var hiddenAnchor = document.createElement('a');
-  hiddenAnchor.href = 'https://pay.hotmart.com/G104595325U?checkoutMode=2';
-  hiddenAnchor.className = 'hotmart-fb hotmart__button-checkout';
-  hiddenAnchor.style.display = 'none';
-  hiddenAnchor.id = 'hotmartAnchor';
-  document.body.appendChild(hiddenAnchor);
+  var hiddenAnchor = document.getElementById('hotmartAnchor');
+  if (!hiddenAnchor) {
+    hiddenAnchor = document.createElement('a');
+    hiddenAnchor.href = 'https://pay.hotmart.com/G104595325U?checkoutMode=2';
+    hiddenAnchor.className = 'hotmart-fb hotmart__button-checkout';
+    hiddenAnchor.style.display = 'none';
+    hiddenAnchor.id = 'hotmartAnchor';
+    document.body.appendChild(hiddenAnchor);
+  } else {
+    // ensure it points to the correct URL and is hidden
+    try { hiddenAnchor.href = 'https://pay.hotmart.com/G104595325U?checkoutMode=2'; hiddenAnchor.style.display = 'none'; } catch(e){}
+  }
+
+  // fallback hidden initially
+  if (fallback) fallback.style.display = 'none';
 
   // after X ms if widget not yet loaded, show fallback and ensure visuals hidden
   setTimeout(function(){
@@ -294,7 +326,7 @@ function jump(id){
     }, false);
   }
 
-  // observe DOM to hide any future-injected widget visuals
+  // observe DOM to hide/remove any future-injected widget visuals
   var mo = new MutationObserver(function(){
     removeHotmartVisuals();
   });
