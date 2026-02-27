@@ -55,10 +55,10 @@ h1 span{color:var(--red)}
 /* Offer & Author tweaks */
 .offer-card { text-align:center; max-width:520px; margin: 0 auto; background: linear-gradient(180deg,#151515,#0f0f12); padding: 28px; border-radius: 16px; box-shadow: 0 18px 60px rgba(0,0,0,0.6); }
 .offer-headline { font-size:1.05rem; color:var(--muted-2); margin-bottom:6px; }
-.offer-price { font-size:2.25rem; font-weight:900; margin:8px 0; color:var(--red); }
+.offer-price { font-size:2.75rem; font-weight:900; margin:8px 0; color:var(--red); }
 .offer-discount { font-size:0.95rem; color:var(--muted); margin-bottom:10px; }
 .offer-installment { font-size:1.05rem; font-weight:700; margin-top:6px; color:var(--text); }
-.offer-cta { display:inline-block; margin-top:18px; padding:14px 26px; font-size:1rem; border-radius:12px; font-weight:800; background:linear-gradient(135deg,var(--red),#ff6b6b); color:#fff; border:none; text-decoration:none; }
+.offer-cta { display:inline-block; margin-top:18px; padding:14px 26px; font-size:1rem; border-radius:12px; font-weight:800; background:linear-gradient(135deg,var(--red),#ff6b6b); color:#fff; border:none; text-decoration:none; cursor:pointer; }
 .offer-trust { font-size:0.92rem; color:var(--muted); margin-top:12px; }
 
 /* Author area */
@@ -79,7 +79,7 @@ h1 span{color:var(--red)}
 @media(max-width:768px){
   .hero,.author{grid-template-columns:1fr}
   nav{display:none}
-  .offer-price{font-size:1.8rem}
+  .offer-price{font-size:2.1rem}
 }
 </style>
 </head>
@@ -122,7 +122,7 @@ h1 span{color:var(--red)}
     </div>
   </section>
 
-  <!-- SOBRE O AUTOR (ajustado) -->
+  <!-- SOBRE O AUTOR (ajustado: top aligned, bio compacta) -->
   <section id="autor" class="section" aria-labelledby="sobre-autor">
     <h2 id="sobre-autor">Sobre o Autor</h2>
     <div class="author">
@@ -158,26 +158,29 @@ h1 span{color:var(--red)}
     </div>
   </section>
 
-  <!-- OFERTA (ajustada: sem botão verde, apenas CTA do site que chama o widget) -->
+  <!-- OFERTA (final: PRICE only in highlight, single site-styled button) -->
   <section id="oferta" class="section" aria-labelledby="oferta-title">
     <h2 id="oferta-title">Invista na sua saúde emocional</h2>
 
     <div class="offer-card" role="region" aria-label="Oferta do curso">
-      <!-- Headline (menor que o preço) -->
-      <div class="offer-headline">Acesso vitalício por apenas R$ 37,90</div>
+      <!-- Price anchor riscado -->
+      <p style="opacity:.6;text-decoration:line-through;margin:0 0 6px;">De R$ 297,00</p>
 
-      <!-- Price in greater emphasis -->
-      <div class="offer-price" aria-hidden="true">R$ 37,90</div>
-
-      <!-- Discount line -->
+      <!-- Discount small -->
       <div class="offer-discount">(87% OFF de R$297)</div>
+
+      <!-- Headline without price (value only in highlight) -->
+      <div class="offer-headline">Acesso vitalício por apenas</div>
+
+      <!-- Price large, single place of truth -->
+      <div class="offer-price" aria-hidden="true">R$ 37,90</div>
 
       <!-- Installment -->
       <div class="offer-installment">Ou 5x de R$ 8,39</div>
 
       <!-- Site-styled CTA that triggers Hotmart widget -->
       <div class="hotmart-wrapper" aria-hidden="false">
-        <button id="hotmartBtn" class="offer-cta offer-cta--site" aria-label="Quero acesso vitalício agora">Quero acesso vitalício agora</button>
+        <button id="hotmartBtn" class="offer-cta" aria-label="Quero acesso vitalício agora">Quero acesso vitalício agora</button>
 
         <!-- Fallback buy link (hidden initially, shown if widget not available) -->
         <a id="fallbackBuy" class="btn btn-primary fallback-buy no-underline" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
@@ -266,21 +269,17 @@ function importHotmart(){
       // try to trigger the widget anchor
       var anchor = document.getElementById('hotmartAnchor');
       if (anchor) {
-        // Some widgets attach handlers after load; trigger click anyway
         anchor.click();
         // after short timeout if nothing happened, show fallback
         setTimeout(function(){
-          // if widget not present, show fallback link (user confirmed fallback yes)
           var hotmartPresent = typeof Hotmart !== 'undefined' || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
           if (!hotmartPresent) {
             var fb = document.getElementById('fallbackBuy');
             if (fb) fb.style.display = 'inline-block';
-            // focus fallback for accessibility
             try { fb.focus(); } catch(e){}
           }
         }, 900);
       } else {
-        // if anchor not yet created, show fallback
         var fb = document.getElementById('fallbackBuy');
         if (fb) fb.style.display = 'inline-block';
       }
