@@ -21,109 +21,66 @@
   --card:#141416;
   --text:#f1f1f1;
   --muted:#b3b3b3;
+  --muted-2:#9aa0a6;
   --red:#e63946;
   --radius:14px;
 }
 
-/* Base (mantido) */
+/* Base */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui;background:radial-gradient(circle at top,#151515,#000);color:var(--text);line-height:1.6;}
+html,body{height:100%}
+body{font-family:'Inter',system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:radial-gradient(circle at top,#151515,#000); color:var(--text); line-height:1.6;}
+a{text-decoration:none;color:inherit}
 .container{max-width:1200px;margin:auto;padding:2rem 1rem}
 header{position:sticky;top:0;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);z-index:10;}
 .header-inner{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto;padding:1rem;}
 nav a{margin-left:1.5rem;color:var(--muted);font-weight:600}
-.btn{display:inline-block;padding:.9rem 1.4rem;border-radius:999px;font-weight:700;cursor:pointer;}
-.btn-primary{background:linear-gradient(135deg,var(--red),#ff6b6b);color:#fff;}
-.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center;}
-.badge{background:#1e1e1e;padding:.4rem .8rem;border-radius:999px;color:var(--red);font-weight:700;display:inline-block;margin-bottom:1rem;}
-h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;}
+.btn{display:inline-block;padding:.9rem 1.4rem;border-radius:999px;font-weight:700;cursor:pointer;text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,var(--red),#ff6b6b);color:#fff;border:none}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+.badge{background:#1e1e1e;padding:.4rem .8rem;border-radius:999px;color:var(--red);font-weight:700;display:inline-block;margin-bottom:1rem}
+h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05}
 h1 span{color:var(--red)}
-.hero p{color:var(--muted);margin:1rem 0 1.5rem;max-width:52ch;}
-.hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius);}
+.hero p{color:var(--muted);margin:1rem 0 1.5rem;max-width:52ch}
+.hero-img{width:100%;height:420px;object-fit:cover;border-radius:var(--radius)}
+
+/* Sections */
 .section{margin-top:4rem}
 .section h2{font-size:2rem;margin-bottom:1.5rem}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
-.card{background:var(--card);padding:1.5rem;border-radius:var(--radius);}
-.author{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:center;}
-.author img{width:100%;border-radius:var(--radius);object-fit:cover;}
-.cta-next{margin-top:1.5rem;display:inline-block;}
-footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);font-size:.85rem;}
-@media(max-width:768px){.hero,.author{grid-template-columns:1fr}nav{display:none}}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.card{background:var(--card);padding:1.5rem;border-radius:var(--radius)}
+.author{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start}
+.author img{width:100%;border-radius:var(--radius);object-fit:cover}
 
-/* --- Novos ajustes CSS apenas para a seção de oferta e Sobre o Autor --- */
-.offer-card {
-  text-align:center;
-  max-width:520px;
-  margin: 0 auto;
-  background: linear-gradient(180deg,#151515,#0f0f12);
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 18px 60px rgba(0,0,0,0.6);
-}
+/* Offer & Author tweaks */
+.offer-card { text-align:center; max-width:520px; margin: 0 auto; background: linear-gradient(180deg,#151515,#0f0f12); padding: 28px; border-radius: 16px; box-shadow: 0 18px 60px rgba(0,0,0,0.6); }
+.offer-headline { font-size:1.05rem; color:var(--muted-2); margin-bottom:6px; }
+.offer-price { font-size:2.25rem; font-weight:900; margin:8px 0; color:var(--red); }
+.offer-discount { font-size:0.95rem; color:var(--muted); margin-bottom:10px; }
+.offer-installment { font-size:1.05rem; font-weight:700; margin-top:6px; color:var(--text); }
+.offer-cta { display:inline-block; margin-top:18px; padding:14px 26px; font-size:1rem; border-radius:12px; font-weight:800; background:linear-gradient(135deg,var(--red),#ff6b6b); color:#fff; border:none; text-decoration:none; }
+.offer-trust { font-size:0.92rem; color:var(--muted); margin-top:12px; }
 
-/* Headline menor que o preço */
-.offer-headline {
-  font-size:1.05rem;
-  color:var(--muted);
-  margin-bottom:6px;
-}
+/* Author area */
+.author-subtitle { color:var(--text); font-weight:700; margin-bottom:8px; }
+.author-bio { color:var(--muted-2); font-size:0.98rem; max-width:62ch; }
+.author-bullets { margin-top:12px; padding-left:1.1rem; color:var(--muted-2); }
+.author-bullets li { margin:8px 0; }
 
-/* Preço em maior destaque */
-.offer-price {
-  font-size:2.25rem;
-  font-weight:900;
-  margin:8px 0;
-  color:var(--red);
-}
-
-/* Percentual de desconto */
-.offer-discount {
-  font-size:0.95rem;
-  color:var(--muted);
-  margin-bottom:10px;
-}
-
-/* Parcelamento em tamanho médio */
-.offer-installment {
-  font-size:1.05rem;
-  font-weight:700;
-  margin-top:6px;
-}
-
-/* CTA grande */
-.offer-cta {
-  display:inline-block;
-  margin-top:18px;
-  padding:14px 26px;
-  font-size:1rem;
-  border-radius:12px;
-  font-weight:800;
-}
-
-/* Garantia menor porém visível */
-.offer-trust {
-  font-size:0.92rem;
-  color:var(--muted);
-  margin-top:12px;
-}
-
-/* Sobre o autor - credenciais em bullets */
-.author-bullets {
-  margin-top:12px;
-  list-style: none;
-  padding-left:0;
-  color:var(--muted);
-}
-.author-bullets li {
-  margin:6px 0;
-}
-
-/* Hotmart button wrapper (to center widget) */
+/* Hotmart wrapper and fallback */
 .hotmart-wrapper { margin-top:14px; display:flex; justify-content:center; align-items:center; gap:12px; flex-direction:column; }
+.fallback-buy { display:none; margin-top:10px; text-decoration:none; }
+.no-underline { text-decoration:none !important; }
 
-/* Fallback buy link (hidden by default, shown if widget fails) */
-.fallback-buy { display:none; margin-top:10px; }
-@media (max-width:480px){ .offer-price{font-size:1.8rem} }
+/* Accessibility focus */
+:focus { outline: 3px solid rgba(230,57,70,0.18); outline-offset: 2px; }
+
+/* Responsive */
+@media(max-width:768px){
+  .hero,.author{grid-template-columns:1fr}
+  nav{display:none}
+  .offer-price{font-size:1.8rem}
+}
 </style>
 </head>
 
@@ -160,28 +117,28 @@ footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);fo
       <div class="card">Reestruturação cognitiva prática</div>
       <div class="card">Plano de manutenção emocional</div>
     </div>
-    <div class="cta-next">
+    <div class="cta-next" style="margin-top:18px">
       <a class="btn btn-primary" onclick="jump('#autor')">Tenho interesse</a>
     </div>
   </section>
 
-  <!-- SOBRE O AUTOR (nova versão otimizada) -->
+  <!-- SOBRE O AUTOR (ajustado) -->
   <section id="autor" class="section" aria-labelledby="sobre-autor">
     <h2 id="sobre-autor">Sobre o Autor</h2>
     <div class="author">
       <img src="assets/images/thiago-portrait.jpg" alt="Foto Dr. Thiago Pozza">
       <div>
-        <div class="author-subtitle" style="color:var(--muted);font-weight:700;margin-bottom:8px">Referência nacional em Terapia Cognitivo-Comportamental</div>
+        <div class="author-subtitle">Referência nacional em Terapia Cognitivo-Comportamental</div>
 
-        <p style="margin-bottom:8px">
+        <p class="author-bio">
           Dr. Thiago Pozza é psicólogo clínico com 10 anos de prática e fundador da Clínica Pozza. Une experiência clínica, formação internacional e didática prática para gerar resultados reais.
         </p>
 
         <ul class="author-bullets" aria-hidden="false">
-          <li>• 10 anos de prática clínica</li>
-          <li>• Certificação internacional pelo Instituto Beck</li>
-          <li>• Especialista e supervisor pelo CTC Veda</li>
-          <li>• Certificação em Neurociência por Harvard (em andamento)</li>
+          <li>10 anos de prática clínica</li>
+          <li>Certificação internacional pelo Instituto Beck</li>
+          <li>Especialista e supervisor pelo CTC Veda</li>
+          <li>Certificação em Neurociência por Harvard (em andamento)</li>
         </ul>
 
         <div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap">
@@ -201,7 +158,7 @@ footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);fo
     </div>
   </section>
 
-  <!-- OFERTA (ajustada conforme sua especificação) -->
+  <!-- OFERTA (ajustada: sem botão verde, apenas CTA do site que chama o widget) -->
   <section id="oferta" class="section" aria-labelledby="oferta-title">
     <h2 id="oferta-title">Invista na sua saúde emocional</h2>
 
@@ -209,34 +166,31 @@ footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);fo
       <!-- Headline (menor que o preço) -->
       <div class="offer-headline">Acesso vitalício por apenas R$ 37,90</div>
 
-      <!-- Preço em destaque (maior) -->
+      <!-- Price in greater emphasis -->
       <div class="offer-price" aria-hidden="true">R$ 37,90</div>
 
       <!-- Discount line -->
       <div class="offer-discount">(87% OFF de R$297)</div>
 
-      <!-- Parcelamento -->
+      <!-- Installment -->
       <div class="offer-installment">Ou 5x de R$ 8,39</div>
 
-      <!-- Hotmart widget / button -->
+      <!-- Site-styled CTA that triggers Hotmart widget -->
       <div class="hotmart-wrapper" aria-hidden="false">
-        <!-- Widget anchor (prevenção: onclick return false as provided) -->
-        <a onclick="return false;" href="https://pay.hotmart.com/G104595325U?checkoutMode=2" class="hotmart-fb hotmart__button-checkout" aria-label="Abrir checkout Hotmart">
-          <img src="https://static.hotmart.com/img/btn-buy-green.png" alt="Comprar agora">
-        </a>
+        <button id="hotmartBtn" class="offer-cta offer-cta--site" aria-label="Quero acesso vitalício agora">Quero acesso vitalício agora</button>
 
-        <!-- Fallback (visível se widget falhar) -->
-        <a id="fallbackBuy" class="btn btn-primary fallback-buy" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
+        <!-- Fallback buy link (hidden initially, shown if widget not available) -->
+        <a id="fallbackBuy" class="btn btn-primary fallback-buy no-underline" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
 
-        <!-- noscript fallback (se JS desativado) -->
+        <!-- noscript fallback -->
         <noscript>
           <div style="margin-top:10px">
-            <a class="btn btn-primary" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
+            <a class="btn btn-primary no-underline" href="REPLACE_CHECKOUT_URL" target="_blank" rel="noopener noreferrer">Quero acesso vitalício agora</a>
           </div>
         </noscript>
       </div>
 
-      <!-- Guarantee (smaller but visible) -->
+      <!-- Guarantee -->
       <div class="offer-trust" role="note">
         Garantia incondicional de 7 dias para reembolso total
       </div>
@@ -249,54 +203,89 @@ footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);fo
   Conteúdo educacional. Não substitui terapia. Em emergência, procure atendimento especializado.
 </footer>
 
-<!-- Small script: jump + Hotmart loader + fallback logic -->
+<!-- Scripts: jump + Hotmart loader + behavior to trigger widget via hidden anchor -->
 <script>
-/* smooth jump (keeps behavior) */
+/* smooth jump with focus */
 function jump(id){
   const el = document.querySelector(id);
   if (!el) return;
   window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
-  // accessibility: move focus after scrolling
   setTimeout(() => {
     try { el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); } catch(e) {}
   }, 250);
 }
 
-/* Import Hotmart widget (insert scripts & css) */
+/* Import Hotmart widget (script+css) and create hidden anchor for widget trigger */
 function importHotmart(){
   try {
-    // widget script
+    // add widget script
     var s = document.createElement('script');
     s.src = 'https://static.hotmart.com/checkout/widget.min.js';
     s.async = true;
     document.head.appendChild(s);
-    // widget css
+
+    // add widget css
     var l = document.createElement('link');
     l.rel = 'stylesheet'; l.type = 'text/css';
     l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
     document.head.appendChild(l);
+
+    // create hidden anchor used to trigger widget (widget binds to anchors with class hotmart__button-checkout)
+    var hiddenA = document.createElement('a');
+    hiddenA.href = 'https://pay.hotmart.com/G104595325U?checkoutMode=2';
+    hiddenA.className = 'hotmart-fb hotmart__button-checkout';
+    hiddenA.style.display = 'none';
+    hiddenA.id = 'hotmartAnchor';
+    document.body.appendChild(hiddenA);
   } catch(e){
     console.warn('Hotmart import failed', e);
   }
 }
 
-/* Fallback logic:
-   If widget doesn't initialize within 2.5s, show fallback buy CTA (link) */
+/* Initialize import and fallback logic */
 (function(){
   importHotmart();
 
-  // after a delay, if Hotmart's global is not present, show fallback button
+  // show fallback if widget not present after 2.5s
   setTimeout(function(){
     var hotmartPresent = typeof Hotmart !== 'undefined' || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
     if (!hotmartPresent) {
       var fb = document.getElementById('fallbackBuy');
       if (fb) fb.style.display = 'inline-block';
     } else {
-      // sometimes widget binds automatically; ensure fallback hidden
       var fb = document.getElementById('fallbackBuy');
       if (fb) fb.style.display = 'none';
     }
   }, 2500);
+
+  // Button click: try to trigger hidden anchor (which the widget will intercept). If not present after short delay, show fallback.
+  var btn = document.getElementById('hotmartBtn');
+  if (btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      // try to trigger the widget anchor
+      var anchor = document.getElementById('hotmartAnchor');
+      if (anchor) {
+        // Some widgets attach handlers after load; trigger click anyway
+        anchor.click();
+        // after short timeout if nothing happened, show fallback
+        setTimeout(function(){
+          // if widget not present, show fallback link (user confirmed fallback yes)
+          var hotmartPresent = typeof Hotmart !== 'undefined' || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
+          if (!hotmartPresent) {
+            var fb = document.getElementById('fallbackBuy');
+            if (fb) fb.style.display = 'inline-block';
+            // focus fallback for accessibility
+            try { fb.focus(); } catch(e){}
+          }
+        }, 900);
+      } else {
+        // if anchor not yet created, show fallback
+        var fb = document.getElementById('fallbackBuy');
+        if (fb) fb.style.display = 'inline-block';
+      }
+    }, false);
+  }
 })();
 </script>
 
