@@ -72,8 +72,14 @@ h1 span{color:var(--red)}
 .offer-cta{display:inline-block;margin-top:18px;padding:16px 36px;font-size:1rem;border-radius:999px;font-weight:800;background:linear-gradient(135deg,var(--red),#ff6b6b);color:#fff;border:none;cursor:pointer}
 .offer-trust{font-size:.92rem;color:var(--muted);margin-top:12px}
 
+/* Hide any Hotmart auto-injected visible UI to avoid duplicate visual buttons */
+.hotmart-fb, .hotmart__button-checkout, .hotmart__button-checkout img { display: none !important; }
+
 /* fallback button hidden until needed */
 .fallback-buy{display:none;margin-top:10px}
+
+/* footer centered small */
+footer{margin-top:4rem;padding:2rem 1rem;text-align:center;color:var(--muted);font-size:.85rem}
 
 /* accessibility */
 :focus{outline:3px solid rgba(230,57,70,0.18);outline-offset:2px}
@@ -85,6 +91,7 @@ h1 span{color:var(--red)}
   .offer-price{font-size:2.1rem}
   .author{grid-template-columns:140px 1fr;gap:18px}
   .author img{width:140px;height:140px}
+  .author-bio{font-size:0.95rem}
 }
 </style>
 </head>
@@ -128,7 +135,7 @@ h1 span{color:var(--red)}
     </div>
   </section>
 
-  <!-- ABOUT / AUTHOR -->
+  <!-- ABOUT / AUTHOR (top-aligned, responsive) -->
   <section id="autor" class="section" aria-labelledby="sobre-autor">
     <h2 id="sobre-autor">Sobre o Autor</h2>
 
@@ -182,7 +189,7 @@ h1 span{color:var(--red)}
       <div class="offer-installment">Ou 5x de R$ 8,39</div>
 
       <div class="hotmart-wrapper" aria-hidden="false">
-        <!-- Site-styled single button that will trigger Hotmart widget via hidden anchor -->
+        <!-- single site-styled CTA (real button) -->
         <button id="hotmartBtn" class="offer-cta" aria-label="Quero acesso vitalício agora">Quero acesso vitalício agora</button>
 
         <!-- fallback link (hidden until widget fails) -->
@@ -205,7 +212,6 @@ h1 span{color:var(--red)}
   Conteúdo educacional. Não substitui terapia. Em emergência, procure atendimento especializado.
 </footer>
 
-<!-- SCRIPTS: smooth jump + Hotmart loading + widget trigger + fallback behavior -->
 <script>
 /* smooth jump with accessibility focus */
 function jump(id){
@@ -217,68 +223,82 @@ function jump(id){
   }, 300);
 }
 
-/* Hotmart import + hidden anchor */
-function importHotmart(){
-  try {
-    var s = document.createElement('script');
-    s.src = 'https://static.hotmart.com/checkout/widget.min.js';
-    s.async = true;
-    document.head.appendChild(s);
-
-    var l = document.createElement('link');
-    l.rel = 'stylesheet'; l.type = 'text/css';
-    l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
-    document.head.appendChild(l);
-
-    var hidden = document.createElement('a');
-    hidden.href = 'https://pay.hotmart.com/G104595325U?checkoutMode=2';
-    hidden.className = 'hotmart-fb hotmart__button-checkout';
-    hidden.style.display = 'none';
-    hidden.id = 'hotmartAnchor';
-    document.body.appendChild(hidden);
-  } catch(e){
-    console.warn('Hotmart import failed', e);
-  }
-}
-
-/* Initialize and fallback logic */
+/* Hotmart import + robust fallback and single-CTA enforcement */
 (function(){
-  importHotmart();
+  var hotmartLoaded = false;
+  var fallback = document.getElementById('fallbackBuy');
 
-  // After a short delay, if widget not present, show fallback link
+  // hide any hotmart-injected UI proactively (CSS also hides it)
+  function removeHotmartVisuals(){
+    var els = document.querySelectorAll('.hotmart-fb, .hotmart__button-checkout');
+    els.forEach(function(x){ x.style.display = 'none'; });
+  }
+
+  // import widget script + css
+  var s = document.createElement('script');
+  s.src = 'https://static.hotmart.com/checkout/widget.min.js';
+  s.async = true;
+  s.onload = function(){
+    hotmartLoaded = true;
+    if (fallback) fallback.style.display = 'none';
+    removeHotmartVisuals();
+  };
+  s.onerror = function(){
+    hotmartLoaded = false;
+    if (fallback) fallback.style.display = 'inline-block';
+  };
+  document.head.appendChild(s);
+
+  var l = document.createElement('link');
+  l.rel = 'stylesheet'; l.type = 'text/css';
+  l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+  document.head.appendChild(l);
+
+  // create hidden anchor for widget to bind to (widget expects anchor)
+  var hiddenAnchor = document.createElement('a');
+  hiddenAnchor.href = 'https://pay.hotmart.com/G104595325U?checkoutMode=2';
+  hiddenAnchor.className = 'hotmart-fb hotmart__button-checkout';
+  hiddenAnchor.style.display = 'none';
+  hiddenAnchor.id = 'hotmartAnchor';
+  document.body.appendChild(hiddenAnchor);
+
+  // after X ms if widget not yet loaded, show fallback
   setTimeout(function(){
-    var hotmartPresent = (typeof Hotmart !== 'undefined') || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
-    var fb = document.getElementById('fallbackBuy');
-    if (!hotmartPresent && fb) {
-      fb.style.display = 'inline-block';
-    } else if (fb) {
-      fb.style.display = 'none';
-    }
-  }, 2500);
+    if (!hotmartLoaded && fallback) fallback.style.display = 'inline-block';
+    removeHotmartVisuals();
+  }, 2600);
 
-  // Click handler for site button: trigger hidden anchor (widget intercepts)
+  // click handler for site button: trigger hidden anchor; if widget not responding, show fallback
   var btn = document.getElementById('hotmartBtn');
-  if (btn) {
+  if (btn){
     btn.addEventListener('click', function(e){
       e.preventDefault();
+      removeHotmartVisuals();
       var anchor = document.getElementById('hotmartAnchor');
-      if (anchor) {
+      if (anchor){
+        // try to trigger the widget binding
         anchor.click();
-        // if nothing happens (widget failed), show fallback after short timeout
+        // after short wait, if widget not active, show fallback
         setTimeout(function(){
-          var hotmartPresent = (typeof Hotmart !== 'undefined') || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
-          var fb = document.getElementById('fallbackBuy');
-          if (!hotmartPresent && fb) {
-            fb.style.display = 'inline-block';
-            try { fb.focus(); } catch(e){}
+          var widgetActive = (typeof Hotmart !== 'undefined') || !!document.querySelector('.hotmart__button-checkout[data-hotmart-initialized]');
+          if (!widgetActive && fallback) {
+            fallback.style.display = 'inline-block';
+            try { fallback.focus(); } catch(e) {}
+          } else {
+            if (fallback) fallback.style.display = 'none';
           }
         }, 900);
       } else {
-        var fb = document.getElementById('fallbackBuy');
-        if (fb) fb.style.display = 'inline-block';
+        if (fallback) fallback.style.display = 'inline-block';
       }
     }, false);
   }
+
+  // ensure any future injected hotmart visuals are hidden
+  var mo = new MutationObserver(function(muts){
+    removeHotmartVisuals();
+  });
+  mo.observe(document.body, { childList:true, subtree:true });
 })();
 </script>
 
